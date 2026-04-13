@@ -1,0 +1,13 @@
+server:
+  port: 8082
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+iot:
+  api:
+    url: http://localhost:8090/api
+    username: ${IOT_API_USERNAME}
+    password: ${IOT_API_PASSWORD}

@@ -17,6 +17,9 @@ spring:
               uri: lb://CROP-SERVICE
               predicates:
                 - Path=/api/crops/**
-
+            - id: sensor-service
+              uri: lb://SENSOR-SERVICE
+              predicates:
+                - Path=/api/sensors/**
 jwt:
   secret: ${JWT_SECRET:432A462D4A614E645267556B58703273357638792F423F4528482B4D62516554}
