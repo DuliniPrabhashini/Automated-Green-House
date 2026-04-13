@@ -1,0 +1,263 @@
+{
+  "info": {
+    "_postman_id": "91ab4721-3c12-4b98-a2d1-77d4f2c9b123",
+    "name": "Smart Greenhouse API Collection",
+    "description": "Collection of APIs for Smart Greenhouse System. All endpoints are accessed via API Gateway running on port 8080.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "55221100",
+    "_collection_link": "https://example.com/collection-link"
+  },
+  "item": [
+    {
+      "name": "Zone Operations",
+      "item": [
+        {
+          "name": "Add Zone",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Lettuce-Zone\",\n    \"minTemp\": 10.0,\n    \"maxTemp\": 25.0\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/zones",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "zones"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Find Zone by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/zones/:id",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "zones", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "2"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Modify Zone Limits",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/zones/:id?minTemp=12.0&maxTemp=22.0",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "zones", ":id"],
+              "query": [
+                { "key": "minTemp", "value": "12.0" },
+                { "key": "maxTemp", "value": "22.0" }
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Remove Zone",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/zones/:id",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "zones", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "50"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Sensor Data",
+      "item": [
+        {
+          "name": "Fetch Latest Data",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/sensors/latest",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "sensors", "latest"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Automation Module",
+      "item": [
+        {
+          "name": "View Logs",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/automation/logs",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "automation", "logs"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Trigger Automation",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"zoneId\": \"Lettuce-Zone\",\n    \"temperature\": 35.0\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/automation/process",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "automation", "process"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "External Sensor Backend",
+      "item": [
+        {
+          "name": "User Register",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\": \"greenhouse_user\",\n    \"password\": \"pass123\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8090/api/auth/register",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8090",
+              "path": ["api", "auth", "register"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "User Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\": \"greenhouse_user\",\n    \"password\": \"pass123\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8090/api/auth/login",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8090",
+              "path": ["api", "auth", "login"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Crop Module",
+      "item": [
+        {
+          "name": "List Crops",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/crops",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "crops"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add Crop Batch",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/crops?zoneId=2&name=Lettuce",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "crops"],
+              "query": [
+                { "key": "zoneId", "value": "2" },
+                { "key": "name", "value": "Lettuce" }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
