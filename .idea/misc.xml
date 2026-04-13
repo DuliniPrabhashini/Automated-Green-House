@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/infrastructure/config-server/pom.xml" />
         <option value="$PROJECT_DIR$/infrastructure/apiGateway-server/pom.xml" />
         <option value="$PROJECT_DIR$/services/crop-server/pom.xml" />
+        <option value="$PROJECT_DIR$/services/sensor-service/pom.xml" />
       </list>
     </option>
   </component>
